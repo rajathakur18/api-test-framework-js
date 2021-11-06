@@ -1,0 +1,423 @@
+{
+  "stats": {
+    "suites": 5,
+    "tests": 14,
+    "passes": 5,
+    "pending": 0,
+    "failures": 9,
+    "start": "2021-11-06T05:44:04.821Z",
+    "end": "2021-11-06T05:44:10.497Z",
+    "duration": 5676,
+    "testsRegistered": 14,
+    "passPercent": 35.7,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "danger",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "847ac78a-1534-4dd1-8523-812632acb151",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "eb9886ab-61cc-47c3-a38b-958c1e2e6ea1",
+        "title": "POST create employee",
+        "fullFile": "C:\\Users\\raja.thakur\\api-test-framework-js\\test\\employeeTest.js",
+        "file": "\\test\\employeeTest.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "verify OK status",
+            "fullTitle": "POST create employee verify OK status",
+            "timedOut": false,
+            "duration": 1140,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "context": "\"Response: {\\\"status\\\":\\\"success\\\",\\\"data\\\":{\\\"name\\\":\\\"Mildred Mitchell\\\",\\\"salary\\\":\\\"252\\\",\\\"age\\\":\\\"56\\\",\\\"id\\\":3175},\\\"message\\\":\\\"Successfully! Record has been added.\\\"}\"",
+            "code": "res = await api.POST(createEmployeeUrl, _hearders, _body);\naddContext(this, 'Response: ' + JSON.stringify(res.body));\nexpect(res.statusCode, 'status not OK').to.equal(200);\nexpect(JSON.stringify(res.body), \"ERROR is detected in response\").not.contains(\"error\");",
+            "err": {},
+            "isRoot": false,
+            "uuid": "d4d285f3-96e1-4256-8b5d-33a8c065e091",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify if user is created",
+            "fullTitle": "POST create employee verify if user is created",
+            "timedOut": false,
+            "duration": 1,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "expect(res.body.id).length.to.greaterThan(1);\n_id = res.body.id;",
+            "err": {
+              "message": "AssertionError: Target cannot be null or undefined.",
+              "estack": "AssertionError: Target cannot be null or undefined.\n    at Context.<anonymous> (test\\employeeTest.js:35:39)\n    at processImmediate (internal/timers.js:439:21)"
+            },
+            "isRoot": false,
+            "uuid": "de6f02f5-791d-4ef3-a547-1115d1f1f7e7",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify response parameters",
+            "fullTitle": "POST create employee verify response parameters",
+            "timedOut": false,
+            "duration": 1,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "expect(res.body).to.have.property('name').that.is.a('string');\nexpect(res.body).to.have.property('salary').that.is.a('string');\nexpect(res.body).to.have.property('age').that.is.a('string');\nexpect(res.body).to.have.property('id').that.is.a('string');",
+            "err": {
+              "message": "AssertionError: expected { Object (status, data, ...) } to have property 'name'",
+              "estack": "AssertionError: expected { Object (status, data, ...) } to have property 'name'\n    at Context.<anonymous> (test\\employeeTest.js:40:34)\n    at processImmediate (internal/timers.js:439:21)"
+            },
+            "isRoot": false,
+            "uuid": "1ebe94bd-aa67-407a-b08f-971c19878739",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "d4d285f3-96e1-4256-8b5d-33a8c065e091"
+        ],
+        "failures": [
+          "de6f02f5-791d-4ef3-a547-1115d1f1f7e7",
+          "1ebe94bd-aa67-407a-b08f-971c19878739"
+        ],
+        "pending": [],
+        "skipped": [],
+        "duration": 1142,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      },
+      {
+        "uuid": "5e3b9bc6-77e2-413f-bb7a-3bc0eb6c7cfe",
+        "title": "GET employee",
+        "fullFile": "C:\\Users\\raja.thakur\\api-test-framework-js\\test\\employeeTest.js",
+        "file": "\\test\\employeeTest.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "verify OK status",
+            "fullTitle": "GET employee verify OK status",
+            "timedOut": false,
+            "duration": 1449,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "context": "\"Response: {\\\"message\\\":\\\"Too Many Attempts.\\\"}\"",
+            "code": "getEmployeeUrl = getEmployeeUrl.replace(\"{id}\", _id);\nres = await api.GET(getEmployeeUrl, _hearders);\naddContext(this, 'Response: ' + JSON.stringify(res.body));\nexpect(res.statusCode, 'status not OK').equal(200);\nexpect(JSON.stringify(res.body), \"ERROR is detected in response\").not.contains(\"error\");",
+            "err": {
+              "message": "AssertionError: status not OK: expected 429 to equal 200",
+              "estack": "AssertionError: status not OK: expected 429 to equal 200\n    at Context.<anonymous> (test\\employeeTest.js:53:49)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)",
+              "diff": "- 429\n+ 200\n"
+            },
+            "isRoot": false,
+            "uuid": "8c31133a-a536-4a0f-8341-3b0a9f58961d",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify if {id} matches with request",
+            "fullTitle": "GET employee verify if {id} matches with request",
+            "timedOut": false,
+            "duration": 0,
+            "state": "passed",
+            "speed": "fast",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "expect(res.body.id).to.equal(_id);\n_res = res.body;",
+            "err": {},
+            "isRoot": false,
+            "uuid": "9f0b0a6a-4b9d-445a-bb74-7ca4ed50cdb4",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify response parameters",
+            "fullTitle": "GET employee verify response parameters",
+            "timedOut": false,
+            "duration": 0,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "expect(res.body).to.have.property('id').that.is.a('string');\nexpect(res.body).to.have.property('employee_name').that.is.a('string');\nexpect(res.body).to.have.property('employee_salary').that.is.a('string');\nexpect(res.body).to.have.property('employee_age').that.is.a('string');\nexpect(res.body).to.have.property('profile_image').that.is.a('string');",
+            "err": {
+              "message": "AssertionError: expected { message: 'Too Many Attempts.' } to have property 'id'",
+              "estack": "AssertionError: expected { message: 'Too Many Attempts.' } to have property 'id'\n    at Context.<anonymous> (test\\employeeTest.js:63:34)\n    at processImmediate (internal/timers.js:439:21)"
+            },
+            "isRoot": false,
+            "uuid": "dfdc81d1-e05b-4252-a719-17f00c4264f0",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "9f0b0a6a-4b9d-445a-bb74-7ca4ed50cdb4"
+        ],
+        "failures": [
+          "8c31133a-a536-4a0f-8341-3b0a9f58961d",
+          "dfdc81d1-e05b-4252-a719-17f00c4264f0"
+        ],
+        "pending": [],
+        "skipped": [],
+        "duration": 1449,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      },
+      {
+        "uuid": "d5a922a9-28ad-4174-b459-6c2e93349973",
+        "title": "GET all employees",
+        "fullFile": "C:\\Users\\raja.thakur\\api-test-framework-js\\test\\employeeTest.js",
+        "file": "\\test\\employeeTest.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "verify OK status",
+            "fullTitle": "GET all employees verify OK status",
+            "timedOut": false,
+            "duration": 987,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "context": "\"Response: {\\\"message\\\":\\\"Too Many Attempts.\\\"}\"",
+            "code": "res = await api.GET(getEmployeesUrl, _hearders);\naddContext(this, 'Response: ' + JSON.stringify(res.body));\nexpect(res.statusCode, 'status not OK').equal(200);\nexpect(JSON.stringify(res.body), \"ERROR is detected in response\").not.contains(\"error\");",
+            "err": {
+              "message": "AssertionError: status not OK: expected 429 to equal 200",
+              "estack": "AssertionError: status not OK: expected 429 to equal 200\n    at Context.<anonymous> (test\\employeeTest.js:77:49)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)",
+              "diff": "- 429\n+ 200\n"
+            },
+            "isRoot": false,
+            "uuid": "c640e91f-5671-4c29-a017-dcba40078bdc",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify the user in employee list",
+            "fullTitle": "GET all employees verify the user in employee list",
+            "timedOut": false,
+            "duration": 1,
+            "state": "passed",
+            "speed": "fast",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "expect(res.body).to.deep.include(_res);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "4eef0d41-6bd1-4a1f-8fd6-eb513e3f71e3",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify response parameters",
+            "fullTitle": "GET all employees verify response parameters",
+            "timedOut": false,
+            "duration": 0,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "expect(res.body[0]).to.have.property('id').that.is.a('string');\nexpect(res.body[0]).to.have.property('employee_name').that.is.a('string');\nexpect(res.body[0]).to.have.property('employee_salary').that.is.a('string');\nexpect(res.body[0]).to.have.property('employee_age').that.is.a('string');\nexpect(res.body[0]).to.have.property('profile_image').that.is.a('string');",
+            "err": {
+              "message": "AssertionError: Target cannot be null or undefined.",
+              "estack": "AssertionError: Target cannot be null or undefined.\n    at Context.<anonymous> (test\\employeeTest.js:86:37)\n    at processImmediate (internal/timers.js:439:21)"
+            },
+            "isRoot": false,
+            "uuid": "0fa06ef6-2f83-42f0-87a6-a670f3998fd6",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "4eef0d41-6bd1-4a1f-8fd6-eb513e3f71e3"
+        ],
+        "failures": [
+          "c640e91f-5671-4c29-a017-dcba40078bdc",
+          "0fa06ef6-2f83-42f0-87a6-a670f3998fd6"
+        ],
+        "pending": [],
+        "skipped": [],
+        "duration": 988,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 5000
+      },
+      {
+        "uuid": "c4a4a0ce-babe-4170-8b47-b5b7f4e4d654",
+        "title": "PUT update employee",
+        "fullFile": "C:\\Users\\raja.thakur\\api-test-framework-js\\test\\employeeTest.js",
+        "file": "\\test\\employeeTest.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "verify OK status",
+            "fullTitle": "PUT update employee verify OK status",
+            "timedOut": false,
+            "duration": 1021,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "context": "\"Response: {\\\"message\\\":\\\"Too Many Attempts.\\\"}\"",
+            "code": "updateEmployeeUrl = updateEmployeeUrl.replace(\"{id}\", _id);\nres = await api.PUT(updateEmployeeUrl, _hearders, _body);\naddContext(this, 'Response: ' + JSON.stringify(res.body));\nexpect(res.statusCode, 'status not OK').to.equal(200);\nexpect(JSON.stringify(res.body), \"ERROR is detected in response\").not.contains(\"error\");",
+            "err": {
+              "message": "AssertionError: status not OK: expected 429 to equal 200",
+              "estack": "AssertionError: status not OK: expected 429 to equal 200\n    at Context.<anonymous> (test\\employeeTest.js:100:52)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)",
+              "diff": "- 429\n+ 200\n"
+            },
+            "isRoot": false,
+            "uuid": "31ccb720-d54c-40cc-9695-96f488269c7b",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify if user is updated",
+            "fullTitle": "PUT update employee verify if user is updated",
+            "timedOut": false,
+            "duration": 1,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "expect(JSON.stringify(res.body)).to.deep.equal(JSON.stringify(_body));",
+            "err": {
+              "message": "AssertionError: expected '{\"message\":\"Too Many Attempts.\"}' to deeply equal '{\"name\":\"Mildred Mitchell\",\"salary\":\"252\",\"age\":\"56\"}'",
+              "estack": "AssertionError: expected '{\"message\":\"Too Many Attempts.\"}' to deeply equal '{\"name\":\"Mildred Mitchell\",\"salary\":\"252\",\"age\":\"56\"}'\n    at Context.<anonymous> (test\\employeeTest.js:105:50)\n    at processImmediate (internal/timers.js:439:21)",
+              "diff": "- {\"message\":\"Too Many Attempts.\"}\n+ {\"name\":\"Mildred Mitchell\",\"salary\":\"252\",\"age\":\"56\"}\n"
+            },
+            "isRoot": false,
+            "uuid": "8f04ef3f-664a-4fed-b96f-e66730a0509a",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify response parameters",
+            "fullTitle": "PUT update employee verify response parameters",
+            "timedOut": false,
+            "duration": 0,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "expect(res.body).to.have.property('name').that.is.a('string');\nexpect(res.body).to.have.property('salary').that.is.a('string');\nexpect(res.body).to.have.property('age').that.is.a('string');",
+            "err": {
+              "message": "AssertionError: expected { message: 'Too Many Attempts.' } to have property 'name'",
+              "estack": "AssertionError: expected { message: 'Too Many Attempts.' } to have property 'name'\n    at Context.<anonymous> (test\\employeeTest.js:109:34)\n    at processImmediate (internal/timers.js:439:21)"
+            },
+            "isRoot": false,
+            "uuid": "ddec2f73-cbef-48fb-818c-39edca0b022b",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [],
+        "failures": [
+          "31ccb720-d54c-40cc-9695-96f488269c7b",
+          "8f04ef3f-664a-4fed-b96f-e66730a0509a",
+          "ddec2f73-cbef-48fb-818c-39edca0b022b"
+        ],
+        "pending": [],
+        "skipped": [],
+        "duration": 1022,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      },
+      {
+        "uuid": "93afb4cc-3800-4382-9d27-3eb87b3c62ca",
+        "title": "DELETE employee",
+        "fullFile": "C:\\Users\\raja.thakur\\api-test-framework-js\\test\\employeeTest.js",
+        "file": "\\test\\employeeTest.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "verify OK status",
+            "fullTitle": "DELETE employee verify OK status",
+            "timedOut": false,
+            "duration": 1040,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "context": "\"Response: \\\"{\\\\\\\"status\\\\\\\":\\\\\\\"success\\\\\\\",\\\\\\\"data\\\\\\\":\\\\\\\"undefined\\\\\\\",\\\\\\\"message\\\\\\\":\\\\\\\"Successfully! Record has been deleted\\\\\\\"}\\\"\"",
+            "code": "deleteEmployeeUrl = deleteEmployeeUrl.replace(\"{id}\", _id);\nres = await api.DELETE(deleteEmployeeUrl, _hearders, '');\naddContext(this, 'Response: ' + JSON.stringify(res.body));\nexpect(res.statusCode, 'status not OK').to.equal(200);\nexpect(JSON.stringify(res.body), \"ERROR is detected in response\").not.contains(\"error\");",
+            "err": {},
+            "isRoot": false,
+            "uuid": "32a48288-3443-4df2-a581-b24b2585c4e5",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify if user is deleted",
+            "fullTitle": "DELETE employee verify if user is deleted",
+            "timedOut": false,
+            "duration": 0,
+            "state": "passed",
+            "speed": "fast",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "expect(res.body, \"Unable to delete employee\").to.have.contains(\"success\");",
+            "err": {},
+            "isRoot": false,
+            "uuid": "1f8fd0bd-082d-40df-b5f6-7f90748860a7",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "32a48288-3443-4df2-a581-b24b2585c4e5",
+          "1f8fd0bd-082d-40df-b5f6-7f90748860a7"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 1040,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2021
+}
